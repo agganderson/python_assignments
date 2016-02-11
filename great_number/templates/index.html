@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>The Great Number Game</title>
+</head>
+<body>
+	<h1>Welcome to the Great Number Game</h1>
+	<p>I am thinking of a number between 1 and 100</p>
+	<p>Take a guess!</p>
+	<form action='/result' method='POST'>
+		<input type='text' name='user_num'>
+		<button>Let's see...</button>
+	</form>
+	{% if session['message'] == 'too high' %}
+	{{ session['message'] }}
+	{% endif %}
+
+	{% if session['message'] == 'too low' %}
+	{{ session['message'] }}
+	{% endif %}
+
+	{% if session['message'] == 'congrats' %}
+	{{ session['message'] }}
+	<form action='/success' method='POST'>
+		<button>Play Again!</button>
+	</form>
+	{% endif %}
+
+	
+
+</body> 
+</html>

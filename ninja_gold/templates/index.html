@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>Ninja Gold</title>
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class='container'>
+		<h2>Your gold: {{ gold }}</h2>
+		<div class='box'>
+			<p>Farm</p>
+			<p>(earns 10-20 golds)</p>
+			<form action='/process_money' method='POST'>
+				<input type='hidden' name='building' value='farm'/>
+				<button class='btn btn-default'>Find Gold!<button/>
+			</form>
+		</div>
+		<div class='box'>
+			<p>Cave</p>
+			<p>(earns 5-10 golds)</p>
+			<form action='/process_money' method='POST'>
+				<input type='hidden' name='building' value='cave'/>
+				<button class='btn btn-default'>Find Gold!<button/>
+			</form>
+		</div>
+		<div class='box'>
+			<p>House</p>
+			<p>(earns 2-5 golds)</p>
+			<form action='/process_money' method='POST'>
+				<input type='hidden' name='building' value='house'/>
+				<button class='btn btn-default'>Find Gold!<button/>
+			</form>
+		</div>
+		<div class='box'>
+			<p>Casino</p>
+			<p>(earns or takes 0-50 golds)</p>
+			<form action='/process_money' method='POST'>
+				<input type='hidden' name='building' value='casino'/>
+				<button class='btn btn-default'>Find Gold!<button/>
+			</form>
+		</div>
+
+		<h2>Activities</h2>
+		{% for i in activities: %}
+		{% if i['status'] == 'won': %}
+		<p style='color: green'>{{ i['sentence'] }}</p>
+		{% else: %}
+		<p style='color: red'>{{ i['sentence'] }}</p>
+		{% endif %}
+		{% endfor %}
+		<p>
+		</p>
+	</div>
+</body>
+</html>

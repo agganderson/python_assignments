@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>Enter Email</title>
+</head>
+<body>
+	<h1>Please enter your email address</h1>
+		<form action='/process' method='POST'>
+			Email: <input type='text' name='email'>
+			<input type='submit' value='Submit'>
+		</form>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+			<p>{{ message }}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
+	{% for email in emails: %}
+		<p>{{ email['address'] }}</p>
+		<hr>
+	{% endfor %}
+</body>
+</html>
